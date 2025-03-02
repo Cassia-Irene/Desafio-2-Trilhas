@@ -108,7 +108,7 @@ header {
         width: 100%;
         max-width: 100%;
         align-items: center;
-        border: solid #D6D3D1;
+        border: solid 1px #D6D3D1;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
         font-size: 16px;
@@ -122,7 +122,7 @@ header {
         width: 100%;
         max-width: 100%;
         align-items: center;
-        border: solid #D6D3D1;
+        border: solid 1px #D6D3D1;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
         font-size: 16px;
@@ -192,7 +192,7 @@ header {
         width: 100%;
         max-width: 100%;
         align-items: center;
-        border: solid #D6D3D1;
+        border: solid 1px #D6D3D1;
         border-radius: 8px;
         font-family: 'Poppins', sans-serif;
         font-size: 16px;
@@ -201,11 +201,35 @@ header {
         box-sizing: border-box;
     }
 
-    & .rua-cidade, .numero-estado {
+    & .info-endereco-residencial {
         display: flex;
-        flex: 1;
-        flex-direction: column;
+        flex-wrap: wrap;
         gap: 20px;
+        width: 100%;
+    }
+
+    & .info-endereco-residencial div {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    & .info-endereco-residencial div:first-child, .info-endereco-residencial div:nth-child(3) {
+        width: 61%;
+    }
+
+    & .info-endereco-residencial div:nth-child(2), .info-endereco-residencial div:nth-child(4) {
+        width: 35%;
+    }
+
+    & .info-endereco-residencial input {
+        border: solid 1px #D6D3D1;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        line-height: 150%;
+        padding: 12px 16px;
+        box-sizing: border-box;
         width: 100%;
     }
 

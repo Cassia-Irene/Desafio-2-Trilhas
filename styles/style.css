@@ -211,15 +211,21 @@ header {
     & .info-endereco-residencial div {
         display: flex;
         flex-direction: column;
-        width: 100%;
+        
     }
 
     & .info-endereco-residencial div:first-child, .info-endereco-residencial div:nth-child(3) {
-        width: 61%;
+        flex: 2;
+        min-width: 300px;
+        flex-basis: 48%;
+        max-width: 500px;
     }
 
     & .info-endereco-residencial div:nth-child(2), .info-endereco-residencial div:nth-child(4) {
-        width: 35%;
+        flex: 1;
+        min-width: 150px;
+        flex-basis: 24%;
+        max-width: 250px;
     }
 
     & .info-endereco-residencial input {
@@ -283,6 +289,45 @@ header {
         line-height: 140%;
         color: #57534E;
  
+    }
+}
+
+@media (min-width: 1565px) {
+    .info-endereco-residencial {
+        justify-content: space-between;
+        gap: 20px;
+    }
+
+    /* Rua e Cidade ocupam mais espaço */
+    .info-endereco-residencial div:first-child,
+    .info-endereco-residencial div:nth-child(3) {
+        width: 48%;
+    }
+
+    /* Número e Estado ocupam menos espaço */
+    .info-endereco-residencial div:nth-child(2),
+    .info-endereco-residencial div:nth-child(4) {
+        width: 22%;
+    }
+}
+
+@media (min-width: 1661px) {
+    .info-endereco-residencial {
+        justify-content: space-between;
+        gap: 24px;
+    }
+
+    /* Mantém os tamanhos proporcionais */
+    .info-endereco-residencial div:first-child,
+    .info-endereco-residencial div:nth-child(3) {
+        flex-basis: 50%;
+        max-width: 600px;
+    }
+
+    .info-endereco-residencial div:nth-child(2),
+    .info-endereco-residencial div:nth-child(4) {
+        flex-basis: 18%;
+        max-width: 220px;
     }
 }
 

@@ -343,11 +343,11 @@ header {
         line-height: 24px;
         color: #57534E;
 
-        & a {
-            color: #E43A12;
-            cursor: pointer;
-            font-weight: 600;
-        }
+    & a {
+        color: #E43A12;
+        cursor: pointer;
+        font-weight: 600;
+     }
     }
 }
 

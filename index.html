@@ -90,34 +90,26 @@
                 </div>
 
                 <div class="container-flex">
-
                     <div class="container-inputs">
                         <div>
                             <label for="rua">Rua</label>
-                            <input type="text" name="rua" id="rua" class="input-md">
+                            <input type="text" name="rua" id="rua" class="">
                         </div>
-    
                         <div>
                             <label for="cidade">Cidade</label>
-                            <input type="text" name="cidade" id="cidade" class="input-md">
+                            <input type="text" name="cidade" id="cidade" class="">
                         </div>
-                    </div>
-
-                    <div>
-                        <label for="cidade">Cidade</label>
-                        <input type="text" name="cidade" id="cidade">
                     </div>
     
                     <div class="container-inputs">
                         <div class="numero">
                             <label for="numero">Número</label>
-                            <input type="text" name="numero" id="numero" class="input-sm">
+                            <input type="text" name="numero" id="numero" class="">
                         </div>
-                </div>
-
-                    <div>
-                        <label for="estado">Estado</label>
-                        <input type="text" name="estado" id="estado" class="input-sm">
+                        <div>
+                            <label for="estado">Estado</label>
+                            <input type="text" name="estado" id="estado" class="">
+                        </div>
                     </div>
                 </div>
                 
@@ -128,48 +120,47 @@
                         <label class="button-docs-comprovante-residencia-label" for="button-docs-comprovante-residencia">Clique aqui para selecionar o arquivo</label>
                     </div>
                 </div> 
-
             </section>
 
-            <section class="trilha-aprendizagem">
+            <section class="trilhas-aprendizagem">
                 <h3>Trilhas de aprendizagem</h3>
                 <p>Selecione apenas uma trilha</p>
 
-                <div class="trilha-btn">
-                    <input type="checkbox" name="checkbox_front-end" id="checkbox_front-end">
-                    <img src="./assets/front-end.svg" alt="">
-                    <p>Programação Front-end</p>
-                </div>
+                <div class="container-trilhas">
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkbox_front-end" id="checkbox_front-end" checked>
+                        <img src="./assets/front-end.svg" alt="">
+                        <p>Programação Front-end</p>
+                    </div>
+                    
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkbox_back-end" id="checkbox_back-end">
+                        <img src="./assets/back-end.svg" alt="">
+                        <p>Programação Back-end</p>
+                    </div>
+                    
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkbox_jogos" id="checkbox_jogos">
+                        <img src="./assets/jogos.svg" alt="">
+                        <p>Programação de Jogos</p>
+                    </div>   
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkbox_ux" id="checkbox_ux">
+                        <img src="./assets/ux.svg" alt="">
+                        <p>Design e Experiência</p>
+                    </div>
 
-                <div class="trilha-btn">
-                    <input type="checkbox" name="checkbox_back-end" id="checkbox_back-end">
-                    <img src="./assets/back-end.svg" alt="">
-                    <p>Programação Back-end</p>
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkbox_dados" id="checkbox_dados">
+                        <img src="./assets/dados.svg" alt="">
+                        <p>Ciência de Dados</p>
+                    </div>
                 </div>
-
-                <div class="trilha-btn">
-                    <input type="checkbox" name="checkbox_jogos" id="checkbox_jogos">
-                    <img src="./assets/jogos.svg" alt="">
-                    <p>Programação de Jogos</p>
-                </div>
-
-                <div class="trilha-btn">
-                    <input type="checkbox" name="checkbox_ux" id="checkbox_ux">
-                    <img src="./assets/ux.svg" alt="">
-                    <p>Design e Experiência</p>
-                </div>
-
-                <div class="trilha-btn">
-                    <input type="checkbox" name="checkbox_dados" id="checkbox_dados">
-                    <img src="./assets/dados.svg" alt="">
-                    <p>Ciência de Dados</p>
-                </div>
-
             </section>
 
             <div class="termos">
-                <input type="checkbox" name="checkbox_termos" id="checkbox_termos">
-                <p>Declaro que li e concordo com os Termos e Condições e com a Política de Privacidade. </p>
+                <input type="checkbox" name="checkbox_termos" id="checkbox_termos" class="">
+                <p>Declaro que li e concordo com os <a>Termos e Condições</a> e com a <a>Política de Privacidade.</a> </p>
             </div>
 
             <div class="buttons">

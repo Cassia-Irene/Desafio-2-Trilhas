@@ -102,6 +102,7 @@ header {
         line-height: 140%;
         color: #57534E;
         padding-bottom: 4px;
+        padding-left: 4px;
     }
 
     & input {
@@ -166,6 +167,7 @@ header {
 
 .endereco-residencial {
     padding-top: 48px;
+    padding-bottom: 48px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -186,6 +188,7 @@ header {
         line-height: 140%;
         color: #57534E;
         padding-bottom: 4px;
+        padding-left: 4px;
     }
 
     & input {
@@ -200,7 +203,27 @@ header {
         padding: 12px 16px;
         box-sizing: border-box;
     }
-    
+
+    & .container-flex {
+        display: flex;
+        gap: 1rem;
+        width: 100%;
+
+        & > *:first-child {
+            width: 70%;
+        }
+
+        & > *:nth-child(2) {
+            width: 30%;
+        }
+    }
+
+    & .container-inputs {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 1.5rem;
+    }
     
     & .conteudo-comprovante-residencia {
         max-width: 100%;
@@ -226,17 +249,18 @@ header {
         color: #A8A29E;
         text-align: center;
         padding-top: 8px;
-        
     }
 
 }
 
 .trilhas-aprendizagem {
     padding-top: 48px;
+    padding-bottom: 48px;
     display: flex;
     flex-direction: column;
     gap: 24px;
     width: 100%;
+    flex-wrap: wrap;
 
     & h3 {
         font-family: 'Poppins', sans-serif;
@@ -251,20 +275,79 @@ header {
         font-size: 14px;
         line-height: 140%;
         color: #57534E;
- 
+    }
+
+    & .container-trilhas {
+        display: flex;
+        gap: 24px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+    
+    & .trilha-btn {
+        display: flex;
+        flex-direction: column;
+        width: calc(50% - 12px);
+        align-items: center;
+        border: solid 1px #D6D3D1;
+        border-radius: 8px;
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        line-height: 150%;
+        padding: 15px 10px;
+        box-sizing: border-box;
+        gap: 8px;
+    }
+
+    & .trilha-btn input {
+        width: 16px;
+        height: 16px;
+        accent-color: #F3541C;
+        margin-right: calc(100% - 15px); /* 100% (mover totalmente para a esquerda) - padding */
+    }
+    
+    & .trilha-btn:nth-child(1) {
+        border: 2px solid #F3541C;
     }
 }
 
-.input-full{
+.input-full {
     max-width: 100% !important;
 }
 .input-md {
     max-width: 60% !important;
 }
-
-.input-sm{
+.input-sm {
     max-width: 30% !important;
-
 }
 
+.termos{
+    display: flex;
+    gap: 12px;
+    padding-top: 10px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    align-items: center;
+    color: #57534E;
+
+    & input {
+        width: 16px;
+        height: 16px;
+        accent-color: #F3541C;
+    }
+
+    & p {
+        font-family: 'Poppins', sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        color: #57534E;
+
+        & a {
+            color: #E43A12;
+            cursor: pointer;
+            font-weight: 600;
+        }
+    }
+}
 

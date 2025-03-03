@@ -359,12 +359,20 @@ header {
 }
 
 .custom-button{
+    margin-bottom: 48px;
     background-color: #E43A12;
-    border: solid 12px #E43A12;
+    border: solid 1px #E43A12;
     border-radius: 8px;
+    padding: 12px 24px;
     font-family: poppins, sans-serif;
     font-size: 16px;
     font-weight: 500;
     color: #FFFFFF;
-
 }
+
+    & .btn-outline{
+        background-color: transparent !important;
+        color: #E43A12;
+        
+    }
+

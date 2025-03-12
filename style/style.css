@@ -56,6 +56,12 @@ body {
     color: #57534E;
     line-height: 150%;
 }
+    & .btn-back-style{
+        text-decoration: none;
+        color: #57534E;
+        margin-top: 8px;
+        
+    }
 
 header {
     display: flex;

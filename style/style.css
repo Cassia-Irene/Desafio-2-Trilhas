@@ -305,16 +305,17 @@ header {
         gap: 8px;
     }
 
+    .trilha-btn:has(input:checked) {
+        border: 2px solid #F3541C; /* Laranja */
+    }
+
     & .trilha-btn input {
         width: 16px;
         height: 16px;
         accent-color: #F3541C;
-        margin-right: calc(100% - 15px); /* 100% (mover totalmente para a esquerda) - padding */
+        margin-right: calc(100% - 15px);
     }
     
-    & .trilha-btn:nth-child(1) {
-        border: 2px solid #F3541C;
-    }
 }
 
 .input-full {

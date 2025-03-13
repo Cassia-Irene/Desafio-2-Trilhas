@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulário de inscrição</title>
+    <link rel="stylesheet" href="/style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="imgs-lateral">
+            <img class="img-lateral" src="./assets/Ilustration.svg" alt="">
+            <img class="logo" src="./assets/Group 2.svg" alt="">
+        </div>
+
+        <form class="form-box" action="">
+
+            <div class="btn-back">
+                <a class="btn-back-style" href="index.html">
+                    <img class="btn-seta" src="./assets/arrow-left-02.svg" alt="" > Voltar
+                </a>
+            </div>
+    
+            <header>
+                <h1>Formulário de inscrição</h1>
+                <p>Preencha os dados abaixo para fazer sua inscrição no Programa Trilhas.</p>
+            </header>
+
+            <section class="info-participante">
+                <h3>Informações do participante</h3>
+                
+                <div>
+                    <label for="nome-completo">Nome completo</label>
+                    <input type="text" name="nome" id="nome-completo">
+                </div>
+                
+                <div>
+                    <label for="data-nascimento">Data de Nascimento</label>
+                    <input type="date" name="data-nascimento" id="data-nascimento">
+                </div>
+
+                <div>
+                    <label for="cpf">CPF</label>
+                    <input type="text" name="cpf" id="cpf">
+                </div>
+
+                <div>
+                    <label for="sexo">Sexo</label>
+                <select name="sexo" id="sexo">
+                    <option value="">Selecione</option>
+                    <option value="feminino">Feminino</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="outro">Outro</option>
+                </select>
+                </div>
+
+                <div>
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email">
+                </div>
+
+                <div>
+                    <label for="telefone">Telefone</label>
+                    <input type="tel" name="telefone" id="telefone">
+                </div>
+
+                <div class="docs-identidade">
+                    <label for="documento-identidade">Documento de identidade</label>
+                    <div class="conteudo-docs-identidade">
+                        <input type="file" name="button-docs-identidade" id="button-docs-identidade" hidden>
+                        <label class="button-docs-identidade-label" for="button-docs-identidade">Clique aqui para selecionar o arquivo</label>
+                    </div>
+                </div>     
+
+            </section>
+
+            <section class="endereco-residencial">
+                <h3>Endereço residencial</h3>
+
+                <div class="cep">
+                    <label class="label-cpf" for="cep">CEP</label>
+                    <input type="text" name="cep" id="cep" class="input-full">
+                </div>
+
+                <div class="container-flex">
+                    <div class="container-inputs">
+                        <div>
+                            <label for="rua">Rua</label>
+                            <input type="text" name="rua" id="rua" class="">
+                        </div>
+                        <div>
+                            <label for="cidade">Cidade</label>
+                            <input type="text" name="cidade" id="cidade" class="">
+                        </div>
+                    </div>
+    
+                    <div class="container-inputs">
+                        <div class="numero">
+                            <label for="numero">Número</label>
+                            <input type="text" name="numero" id="numero" class="">
+                        </div>
+                        <div>
+                            <label for="estado">Estado</label>
+                            <input type="text" name="estado" id="estado" class="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="docs-comprovante-residencia">
+                    <label for="comprovante-residencia">Comprovante de Residência</label>
+                    <div class="conteudo-comprovante-residencia">
+                        <input type="file" name="button-comprovante-residencia" id="button-docs-comprovante-residencia" hidden>
+                        <label class="button-docs-comprovante-residencia-label" for="button-docs-comprovante-residencia">Clique aqui para selecionar o arquivo</label>
+                    </div>
+                </div> 
+            </section>
+
+            <section class="trilhas-aprendizagem">
+                <h3>Trilhas de aprendizagem</h3>
+                <p>Selecione apenas uma trilha</p>
+
+                <div class="container-trilhas">
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkboxs" id="checkbox_front-end" checked>
+                        <img src="./assets/front-end.svg" alt="">
+                        <p>Programação Front-end</p>
+                    </div>
+                    
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkboxs" id="checkbox_back-end">
+                        <img src="./assets/back-end.svg" alt="">
+                        <p>Programação Back-end</p>
+                    </div>
+                    
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkboxs" id="checkbox_jogos">
+                        <img src="./assets/jogos.svg" alt="">
+                        <p>Programação de Jogos</p>
+                    </div>   
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkboxs" id="checkbox_ux">
+                        <img src="./assets/ux.svg" alt="">
+                        <p>Design e Experiência</p>
+                    </div>
+
+                    <div class="trilha-btn">
+                        <input type="radio" name="checkboxs" id="checkbox_dados">
+                        <img src="./assets/dados.svg" alt="">
+                        <p>Ciência de Dados</p>
+                    </div>
+                </div>
+            </section>
+
+            <div class="termos">
+                <input type="checkbox" name="checkbox_termos" id="checkbox_termos" class="">
+                <p>Declaro que li e concordo com os <a>Termos e Condições</a> e com a <a>Política de Privacidade.</a> </p>
+            </div>
+
+            <div class="container-buttons">
+                <button class="custom-button btn-outline">Cancelar</button>
+                <button type="submit" class="custom-button">Fazer inscrição</button>
+            </div>
+
+        </form>
+      
+    </div>
+</body>
+</html>

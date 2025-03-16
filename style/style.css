@@ -546,10 +546,6 @@ header {
         display: none;
     }
 
-    .form-box {
-        width: 100vw;
-    }
-
     .container-buttons {
         justify-content: center;
     }

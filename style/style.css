@@ -528,3 +528,30 @@ header {
     
 }
 
+@media screen and (max-width: 425px) {
+    .container {
+        padding-right: 0;
+    }
+    
+    .imgs-lateral {
+        background-color: transparent;
+        display: none;
+    }
+
+    .img-lateral {
+        display: none;
+    }
+
+    .logo {
+        display: none;
+    }
+
+    .form-box {
+        width: 100vw;
+    }
+
+    .container-buttons {
+        justify-content: center;
+    }
+}
+

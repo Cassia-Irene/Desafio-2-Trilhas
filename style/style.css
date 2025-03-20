@@ -385,33 +385,7 @@ header {
         
     }
 
-@media screen and (max-width: 1440px) {
-    .img-lateral {
-        width: 70%;
-        padding-left: 15%;
-    }
-    
-    .logo {
-        width: 35%;
-        padding-left: 33%;
-    }
 
-    .info-participante {
-        .conteudo-docs-identidade {
-            .button-docs-identidade-label {
-                width: 50%;
-            }
-        }
-    }
-
-    .endereco-residencial{
-        .conteudo-comprovante-residencia {
-            .button-docs-comprovante-residencia-label {
-                width: 50%;
-            }
-        }
-    }
-}
 
 @media screen and (max-width: 1024px) {
     .img-lateral {
@@ -469,15 +443,16 @@ header {
 }
 
 @media screen and (max-width: 768px) {
-    .img-lateral {
-        width: 90%;
-        padding-left: 5%;
-        padding-top: 60%;
+    .container {
+        padding-right: 0;
+    }
+    .imgs-lateral {
+        background-color: transparent;
+        display: none;
     }
 
     .logo {
-        width: 45%;
-        padding-left: 27%;
+        display: none;
     }
 
     .info-participante {
@@ -528,26 +503,5 @@ header {
     
 }
 
-@media screen and (max-width: 768px) {
-    .container {
-        padding-right: 0;
-    }
-    
-    .imgs-lateral {
-        background-color: transparent;
-        display: none;
-    }
-
-    .img-lateral {
-        display: none;
-    }
-
-    .logo {
-        display: none;
-    }
-
-    .container-buttons {
-        justify-content: center;
-    }
-}
+ 
 

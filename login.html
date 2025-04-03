@@ -13,7 +13,9 @@
   </head>
 
   <body class="bg-[#0F1640] flex w-screen h-screen">
-    <div class="flex items-center justify-center w-full lg:w-3/5 h-auto">
+    <div
+      class="flex items-center justify-center w-full lg:w-3/5 h-auto bg-[url(/assets/layered-waves-haikei.svg)] bg-cover bg-no-repeat lg:-mt-48 "
+    >
       <div class="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 class="text-2xl font-bold text-center mb-6">Acesse sua conta</h2>
         <form onsubmit="login(event)">
@@ -45,12 +47,25 @@
               placeholder="Digite sua senha"
             />
           </div>
-          <button
-            type="submit"
-            class="w-full text-white py-2 rounded-md bg-[#2135A6] hover:bg-[#0F1640] transition duration-200"
-          >
-            Entrar
-          </button>
+          <div class="flex flex-col gap-4">
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="remember"
+                name="remember"
+                class="mr-2 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+              />
+              <label for="remember" class="text-sm text-gray-700"
+                >Lembrar-me</label
+              >
+            </div>
+            <button
+              type="submit"
+              class="w-full text-white py-2 rounded-md bg-[#2135A6] hover:bg-[#0F1640] transition duration-200"
+            >
+              Entrar
+            </button>
+          </div>
         </form>
       </div>
     </div>

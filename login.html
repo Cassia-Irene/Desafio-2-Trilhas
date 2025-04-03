@@ -1,37 +1,67 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
 
     <title>Login</title>
-</head>
+  </head>
 
-<body class="bg-[#0F1640]">
-    <div class="container">
-    <div class="imgs-lateral bg-white fixed h-screen w-1/2 flex flex-col items-center justify-center">
-        <img class="img-lateral" src="assets/imagem-lateral.jpg" alt=""></div>
-    </div>
-        
-    <div class="flex items-center justify-between h-screen">
-        <div class="bg-white p-8 rounded-lg shadow-lg w-96">
-            <h2 class="text-2xl font-bold text-center mb-6">Acesse sua conta</h2>
-            <form action="/login" method="POST">
-                <div class="mb-4">
-                    <label for="cpf" class="block text-sm font-medium text-gray-700">CPF</label>
-                    <input type="cpf" id="cpf" name="cpf" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="Digite seu CPF">
-                </div>
-                <div class="mb-4">
-                    <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
-                    <input type="password" id="password" name="password" required class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500" placeholder="Digite sua senha">
-                </div>
-                <button a type="submit" class="w-full  text-white py-2 rounded-md bg-[#2135A6] hover:bg-[#0F1640] transition duration-200">Entrar</button>
-            </form>
-        </div>
+  <body class="bg-[#0F1640] flex w-screen h-screen">
+    <div class="flex items-center justify-center w-full lg:w-3/5 h-auto">
+      <div class="bg-white p-8 rounded-lg shadow-lg w-96">
+        <h2 class="text-2xl font-bold text-center mb-6">Acesse sua conta</h2>
+        <form onsubmit="login(event)">
+          <div class="mb-4">
+            <label for="cpf" class="block text-sm font-medium text-gray-700"
+              >CPF</label
+            >
+            <input
+              type="cpf"
+              id="cpf"
+              name="cpf"
+              required
+              class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+              placeholder="Digite seu CPF"
+            />
+          </div>
+          <div class="mb-4">
+            <label
+              for="password"
+              class="block text-sm font-medium text-gray-700"
+              >Senha</label
+            >
+            <input
+              type="password"
+              id="password"
+              name="password"
+              required
+              class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
+              placeholder="Digite sua senha"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full text-white py-2 rounded-md bg-[#2135A6] hover:bg-[#0F1640] transition duration-200"
+          >
+            Entrar
+          </button>
+        </form>
+      </div>
     </div>
 
-    
-</body>
+    <div class="hidden lg:flex h-full w-2/5 overflow-y-auto z-1">
+      <div
+        class="imgs-lateral bg-white fixed h-full flex flex-col items-center justify-center"
+      >
+        <img class="img-lateral" src="assets/imagem-lateral.jpg" alt="" clas />
+      </div>
+    </div>
+  </body>
+  <script src="js/login.js"></script>
 </html>

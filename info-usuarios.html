@@ -8,12 +8,14 @@
 </head>
 <body class=" bg-white">
 
-    <button id="menu-btn" class="md:hidden fixed top-4 left-4 z-50 bg-gray-800 text-white p-2 rounded">
-        ☰
-    </button>
+    <header>    
+        <button id="menu-btn" class="md:hidden fixed top-6 left-4 z-50 bg-[#2135A6] text-white p-2 rounded">
+            ☰
+        </button>
+    </header>
 
     <aside id="sidebar" class="fixed top-0 left-0 w-64 h-screen bg-[#0F1640] text-white p-5 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 gap-16">
-        <h1 class="text-xl font-bold mb-5">Bem-vindo, usuário!</h1>
+        <h1 class="text-xl font-bold mb-5 mt-16 lg:mt-0">Bem-vindo, usuário!</h1>
         
         <nav class="flex flex-col gap-4">
             <a class="flex flex-row gap-4" href="#" class="hover:bg-[#2135A6] p-2 rounded"> <img src="assets/house (1).svg" alt="">Seus dados</a>
@@ -21,10 +23,21 @@
         </nav>
     </aside>
 
-    <main class="flex-1 p-5 md:ml-64">
+    <main class="flex-1 p-5 md:ml-64 ml-16">
         <h2 class="text-2xl font-bold">Bem-vindo!</h2>
         <p class="mt-2">Aqui é o conteúdo principal da página.</p>
     </main>
 
+
+
 </body>
+
+<script>
+    const menuBtn = document.getElementById('menu-btn');
+    const sidebar = document.getElementById('sidebar');
+
+    menuBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('-translate-x-full');
+    });
+</script>
 </html>

@@ -52,6 +52,19 @@ function saveForm() {
         mensagemErro = 'Este campo é obrigatório';
       }
 
+      if (campo.name === 'nome' && conteudo) {
+        const regexNome = /^[A-Za-zÀ-ÿ\s'-]+$/;
+        const partesNome = conteudo.split(' ').filter(p => p.length > 1);
+
+        if (conteudo.length < 3) {
+          mensagemErro = 'É necessário que o nome tenha pelo menos 3 letras';
+        } else if (!regexNome.test(conteudo)) {
+          mensagemErro = 'Insira um nome válido';
+        } else if (partesNome.length < 3) {
+          mensagemErro = 'Insira o nome completo';
+        }
+      }
+
       if(campo.name === 'cpf' && conteudo && conteudo.length !== 14) {
         mensagemErro = 'Insira um CPF válido';
       }
@@ -79,7 +92,7 @@ function saveForm() {
       }
     });
 
-    const identidade = document.getElementById('button-docs-identidade');
+    /*const identidade = document.getElementById('button-docs-identidade');
     const residencia = document.getElementById('button-docs-comprovante-residencia');
 
       if (identidade.files.length === 0) {
@@ -96,7 +109,7 @@ function saveForm() {
         erro.classList.add('mensagem-erro');
         erro.innerHTML = `${svgErro} Envie o arquivo de comprovante de residência`;
         residencia.insertAdjacentElement('afterend', erro);
-      }
+      }*/
 
     return isValid;
   }
@@ -147,7 +160,5 @@ function saveForm() {
       .replace(/(-\d{3})\d+?$/, '$1');
     }
   });
-
-  window.validateForm = validateForm;
   
   //loadFormData();

@@ -6,7 +6,7 @@
     <title>Página do Aluno</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class=" bg-white">
+<body class=" bg-[#F3F4F6] min-h-screen flex">
 
     <header>    
         <button id="menu-btn" class="md:hidden fixed top-6 left-4 z-50 bg-[#2135A6] text-white p-2 rounded">
@@ -14,18 +14,22 @@
         </button>
     </header>
 
-    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-screen bg-[#0F1640] text-white p-5 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 gap-16">
+    <aside id="sidebar" class="fixed top-0 left-0 w-64 h-screen bg-[#0F1640] text-white p-5 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 gap-20">
+
         <h1 class="text-xl font-bold mb-5 mt-16 lg:mt-0">Bem-vindo, usuário!</h1>
         
-        <nav class="flex flex-col gap-4">
+        <nav class="flex flex-col gap-8">
             <a class="flex flex-row gap-4" href="#" class="hover:bg-[#2135A6] p-2 rounded"> <img src="assets/house (1).svg" alt="">Seus dados</a>
+            <a class="flex flex-row gap-4" href="#" class="hover:bg-[#2135A6] p-2 rounded"> <img src="assets/lock.svg" alt="">Alterar senha</a>
             <a class="flex flex-row gap-4" href="index.html" class="hover:bg-[#2135A6] p-2 rounded"> <img src="assets/arrow-left (1).svg" alt=""> Sair</a>
         </nav>
     </aside>
 
     <main class="flex-1 p-5 md:ml-64 ml-16">
-        <h2 class="text-2xl font-bold">Bem-vindo!</h2>
+        <div class=" w-full h-auto p-20 bg-white shadow-md rounded-lg">
+            <h2 class="text-2xl font-bold">Seus Dados</h2>
         <p class="mt-2">Aqui é o conteúdo principal da página.</p>
+        </div>
     </main>
 
 

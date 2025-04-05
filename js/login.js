@@ -10,10 +10,9 @@ function login(event) {
     const { cpf, senha } = data;
     const sessionData = JSON.parse(sessionStorage.getItem('userData'));
   
+
   
-    const dtnascFormatado = sessionData["data-nascimento"].split('-').reverse().join("");
-  
-    if (sessionData && sessionData.cpf === cpf && senha === dtnascFormatado) {
+    if (sessionData && sessionData.cpf === cpf && sessionData.senha=== senha) {
       console.log('Login bem-sucedido');
     
       sessionStorage.setItem('userData', JSON.stringify(data));

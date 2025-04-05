@@ -40,22 +40,22 @@
                 
                 <div>
                     <label for="nome-completo">Nome completo</label>
-                    <input type="text" name="nome" id="nome-completo">
+                    <input type="text" name="nome" id="nome-completo" required>
                 </div>
                 
                 <div>
                     <label for="data-nascimento">Data de Nascimento</label>
-                    <input type="date" name="data-nascimento" id="data-nascimento">
+                    <input type="date" name="data-nascimento" id="data-nascimento" required>
                 </div>
 
                 <div>
                     <label for="cpf">CPF</label>
-                    <input type="text" name="cpf" id="cpf">
+                    <input type="text" name="cpf" id="cpf" required>
                 </div>
 
                 <div>
                     <label for="sexo">Sexo</label>
-                <select name="sexo" id="sexo">
+                <select name="sexo" id="sexo" required>
                     <option value="">Selecione</option>
                     <option value="feminino">Feminino</option>
                     <option value="masculino">Masculino</option>
@@ -65,18 +65,18 @@
 
                 <div>
                     <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email">
+                    <input type="email" name="email" id="email" required>
                 </div>
 
                 <div>
                     <label for="telefone">Telefone</label>
-                    <input type="tel" name="telefone" id="telefone">
+                    <input type="tel" name="telefone" id="telefone" required>
                 </div>
 
                 <div class="docs-identidade">
                     <label for="documento-identidade">Documento de identidade</label>
                     <div class="conteudo-docs-identidade">
-                        <input type="file" name="button-docs-identidade" id="button-docs-identidade" hidden>
+                        <input type="file" name="button-docs-identidade" id="button-docs-identidade" hidden accept=".pdf">
                         <label class="button-docs-identidade-label" for="button-docs-identidade">Clique aqui para selecionar o arquivo</label>
                     </div>
                 </div>     
@@ -88,29 +88,29 @@
 
                 <div class="cep">
                     <label class="label-cpf" for="cep">CEP</label>
-                    <input type="text" name="cep" id="cep" class="input-full">
+                    <input type="text" name="cep" id="cep" class="input-full" required>
                 </div>
 
                 <div class="container-flex">
                     <div class="container-inputs">
                         <div>
                             <label for="rua">Rua</label>
-                            <input type="text" name="rua" id="rua" class="">
+                            <input type="text" name="rua" id="rua" class="" required>
                         </div>
                         <div>
                             <label for="cidade">Cidade</label>
-                            <input type="text" name="cidade" id="cidade" class="">
+                            <input type="text" name="cidade" id="cidade" class="" required>
                         </div>
                     </div>
     
                     <div class="container-inputs">
                         <div class="numero">
                             <label for="numero">Número</label>
-                            <input type="text" name="numero" id="numero" class="">
+                            <input type="text" name="numero" id="numero" class="" required>
                         </div>
                         <div>
                             <label for="estado">Estado</label>
-                            <input type="text" name="estado" id="estado" class="">
+                            <input type="text" name="estado" id="estado" class="" required>
                         </div>
                     </div>
                 </div>
@@ -118,7 +118,7 @@
                 <div class="docs-comprovante-residencia">
                     <label for="comprovante-residencia">Comprovante de Residência</label>
                     <div class="conteudo-comprovante-residencia">
-                        <input type="file" name="button-comprovante-residencia" id="button-docs-comprovante-residencia" hidden>
+                        <input type="file" name="button-comprovante-residencia" id="button-docs-comprovante-residencia" hidden accept=".pdf">
                         <label class="button-docs-comprovante-residencia-label" for="button-docs-comprovante-residencia">Clique aqui para selecionar o arquivo</label>
                     </div>
                 </div> 
@@ -177,18 +177,19 @@
             </section>
 
             <div class="termos">
-                <input type="checkbox" name="checkbox_termos" id="checkbox_termos" class="">
+                <input type="checkbox" name="checkbox_termos" id="checkbox_termos" class="" required>
                 <p>Declaro que li e concordo com os <a>Termos e Condições</a> e com a <a>Política de Privacidade.</a> </p>
             </div>
 
             <div class="container-buttons">
-                <button class="custom-button btn-outline">Cancelar</button>
+                <button type="button" class="custom-button btn-outline">Cancelar</button>
                 <button type="submit" class="custom-button">Fazer inscrição</button>
             </div>
 
         </form>
       
     </div>
+    <script src="js/form.js"></script>
 </body>
-<script src="js/form.js"></script>
+
 </html>

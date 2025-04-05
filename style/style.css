@@ -37,6 +37,20 @@ body {
     padding-left: 37%;
 }
 
+.erro {
+    border: 2px solid #dc2626;
+    outline: none;
+}
+
+.mensagem-erro {
+    color: #dc2626;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .form-box {
     flex: 1;
     min-height: 100vh;

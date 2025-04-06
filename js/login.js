@@ -16,10 +16,11 @@ function login(event) {
       console.log('Login bem-sucedido');
     
       sessionStorage.setItem('userData', JSON.stringify(data));
+      sessionStorage.setItem('isLoggedIn', userData.isLoggedIn);
+
     
       window.location.href = 'info-usuarios.html';
     } else {
-      console.log('CPF ou Senha inválidos');
       alert('CPF ou senha inválidos');
     }
   

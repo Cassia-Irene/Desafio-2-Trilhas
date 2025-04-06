@@ -16,7 +16,7 @@
 
     <aside id="sidebar" class="fixed top-0 left-0 w-64 h-screen bg-[#0F1640] text-white p-5 flex flex-col transform -translate-x-full md:translate-x-0 transition-transform duration-300 gap-20">
 
-        <h1 class="text-xl font-bold mb-5 mt-16 lg:mt-0">Bem-vindo, usuário!</h1>
+        <h1 id="boas-vindas" class="text-xl font-bold mb-5 mt-16 lg:mt-0"></h1>
         
         <nav class="flex flex-col gap-8">
             <a class="flex flex-row gap-4" href="#" class="hover:bg-[#2135A6] p-2 rounded"> <img src="assets/house (1).svg" alt="">Seus dados</a>
@@ -42,6 +42,12 @@
 
     menuBtn.addEventListener('click', () => {
         sidebar.classList.toggle('-translate-x-full');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        const boasVindas = document.getElementById('boas-vindas');
+        const usuario = JSON.parse(sessionStorage.getItem('usuario'));
+        boasVindas.textContent = `Bem-vindo(a), ${usuario.nome}`;
     });
 </script>
 </html>

@@ -15,8 +15,7 @@ function login(event) {
     if (sessionData && sessionData.cpf === cpf && sessionData.senha=== senha) {
       console.log('Login bem-sucedido');
     
-      sessionStorage.setItem('userData', JSON.stringify(data));
-      sessionStorage.setItem('isLoggedIn', userData.isLoggedIn);
+      sessionStorage.setItem('isLoggedIn', true);
 
     
       window.location.href = 'info-usuarios.html';

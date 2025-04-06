@@ -19,7 +19,7 @@
     >
       <div class="bg-white p-8 rounded-lg shadow-lg w-96">
         <h2 class="text-2xl font-bold text-center mb-6">Acesse sua conta</h2>
-        <form onsubmit="login(event)">
+        <form id="login-form" onsubmit="login(event)">
           <div class="mb-4">
             <label for="cpf" class="block text-sm font-medium text-gray-700"
               >CPF</label
@@ -42,7 +42,7 @@
             <input
               type="password"
               id="password"
-              name="password"
+              name="senha"
               required
               class="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-blue-500"
               placeholder="Digite sua senha"
@@ -62,7 +62,6 @@
             </div>
             <button
               type="submit"
-              onclick="window.location.href='info-usuarios.html'"
               class="w-full text-white py-2 rounded-md bg-[#2135A6] hover:bg-[#0F1640] transition duration-200"
             >Entrar
             </button>

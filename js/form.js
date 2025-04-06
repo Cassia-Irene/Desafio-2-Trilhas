@@ -172,6 +172,8 @@ function saveForm() {
 
       document.querySelector('.docs-comprovante-residencia').insertAdjacentElement('afterend', erro);
     }
+
+    return isValid;
   }
   
   function register(event){
@@ -199,7 +201,7 @@ function saveForm() {
 
     if (edit_campo.name === 'cpf') {
       edit_campo.value = edit_campo.value
-      .replace(/\D/g, '')
+      .replace(/\D/g, '').slice(0, 11)
       .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d{1,2})$/, '$1-$2');

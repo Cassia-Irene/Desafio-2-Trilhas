@@ -65,16 +65,65 @@ function saveForm() {
         }
       }
 
+      if (campo.name === 'data-nascimento' && conteudo) {
+        const hoje = new Date();
+        const dataNascimento = new Date(conteudo);
+        
+        if (isNaN(dataNascimento.getTime())) {
+          mensagemErro = 'Insira uma data de nascimento válida';
+        } else if (dataNascimento >= hoje) {
+          mensagemErro = 'Insira uma data de nascimento válida';
+        } else {
+          let idade = hoje.getFullYear() - dataNascimento.getFullYear();
+          const mes = hoje.getMonth() - dataNascimento.getMonth();
+
+          if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+            idade--;
+          }
+
+          if (idade < 15) {
+            mensagemErro = 'É necessário ter pelo menos 15 anos';
+          } else if (idade > 100) {
+            mensagemErro = 'Insira uma data de nascimento válida';
+          }
+        }
+      }
+
       if(campo.name === 'cpf' && conteudo && conteudo.length !== 14) {
         mensagemErro = 'Insira um CPF válido';
       }
 
-      if (campo.name === 'email' && conteudo && !conteudo.includes('@')) {
-        mensagemErro = 'Insira um e-mail válido';
+      if (campo.name === 'email' && conteudo) {
+        const dominiosTemporarios = [
+          'tempmail.com',
+          '10minutemail.com',
+          'guerrillamail.com',
+          'mailinator.com',
+          'dispostable.com',
+          'yopmail.com',
+          'getnada.com',
+          'trashmail.com',
+          'fakeinbox.com',
+          'emailondeck.com'
+        ];
+        const regexEmail = /^(?=[^@]*[a-zA-Z])[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!regexEmail.test(conteudo)) {
+          mensagemErro = 'Insira um e-mail válido';
+        } else {
+          const dominioEmail = conteudo.split('@')[1].toLowerCase();
+          if (dominiosTemporarios.includes(dominioEmail)) {
+            mensagemErro = 'Emails temporários não são permitidos';
+          }
+        }
       }
 
-      if (campo.name === 'telefone' && conteudo && conteudo.length !== 15) {
-        mensagemErro = 'Insira um telefone válido';
+      if (campo.name === 'telefone' && conteudo) {
+        const regexTelefone = /^\(\d{2}\)\s\d{4,5}-\d{4}$/;
+
+        if (!regexTelefone.test(conteudo)) {
+          mensagemErro = 'Insira um telefone válido';
+        }
       }
 
       if (campo.name === 'cep' && conteudo && conteudo.length !== 9) {
@@ -90,28 +139,29 @@ function saveForm() {
 
         campo.insertAdjacentElement('afterend', erro);
       }
+      
     });
 
-    /*const identidade = document.getElementById('button-docs-identidade');
-    const residencia = document.getElementById('button-docs-comprovante-residencia');
+    const identidadeInput = document.getElementById('button-docs-identidade');
+    const residenciaInput = document.getElementById('button-docs-comprovante-residencia');
 
-      if (identidade.files.length === 0) {
-        isValid = false;
-        const erro = document.createElement('div');
-        erro.classList.add('mensagem-erro');
-        erro.innerHTML = `${svgErro} Envie o arquivo de identidade`;
-        identidade.insertAdjacentElement('afterend', erro);
-      }
+    if (identidadeInput.files.length === 0) {
+      isValid = false;
+      const erro = document.createElement('div');
+      erro.classList.add('mensagem-erro');
+      erro.innerHTML = `${svgErro} É necessário enviar um documento de identidade`;
 
-      if (residencia.files.length === 0) {
-        isValid = false;
-        const erro = document.createElement('div');
-        erro.classList.add('mensagem-erro');
-        erro.innerHTML = `${svgErro} Envie o arquivo de comprovante de residência`;
-        residencia.insertAdjacentElement('afterend', erro);
-      }*/
+      document.querySelector('.docs-identidade').insertAdjacentElement('afterend', erro);
+    }
 
-    return isValid;
+    if (residenciaInput.files.length === 0) {
+      isValid = false;
+      const erro = document.createElement('div');
+      erro.classList.add('mensagem-erro');
+      erro.innerHTML = `${svgErro} É necessário enviar um comprovante de residência`;
+
+      document.querySelector('.docs-comprovante-residencia').insertAdjacentElement('afterend', erro);
+    }
   }
   
   function register(event){
@@ -146,11 +196,15 @@ function saveForm() {
     }
 
     if (edit_campo.name === 'telefone') {
-      edit_campo.value = edit_campo.value
-      .replace(/\D/g, '')
-      .replace(/(\d{2})(\d)/, '($1) $2')
-      .replace(/(\d{5})(\d)/, '$1-$2')
-      .replace(/(-\d{4})\d+?$/, '$1');
+      let numero = edit_campo.value.replace(/\D/g, '');
+      
+      if (numero.length <= 10) {
+        numero = numero.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
+      } else {
+        numero = numero.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
+      }
+
+      edit_campo.value = numero.replace(/(-\d{4})\d+?$/, '$1');
     }
 
     if (edit_campo.name === 'cep') {

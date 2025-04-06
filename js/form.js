@@ -172,6 +172,7 @@ function saveForm() {
 
       document.querySelector('.docs-comprovante-residencia').insertAdjacentElement('afterend', erro);
     }
+    return isValid;
   }
   
   function register(event){

@@ -185,6 +185,8 @@ header {
         color: #A8A29E;
         text-align: center;
         padding-top: 0.5rem;
+        display: block;
+        margin: 0 auto;
     }
 }
 
@@ -271,6 +273,8 @@ header {
         color: #A8A29E;
         text-align: center;
         padding-top: 8px;
+        display: block;
+        margin: 0 auto;
     }
 
 }

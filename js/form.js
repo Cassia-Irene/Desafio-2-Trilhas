@@ -1,3 +1,13 @@
+document.getElementById('button-docs-identidade').addEventListener('change', function() {
+  const arquivoIdentidade = this.files[0]?.name || 'Nenhum arquivo selecionado';
+  document.querySelector('.button-docs-identidade-label').innerHTML = arquivoIdentidade;
+});
+
+document.getElementById('button-docs-comprovante-residencia').addEventListener('change', function() {
+  const arquivoResidencia = this.files[0]?.name || 'Nenhum arquivo selecionado';
+  document.querySelector('.button-docs-comprovante-residencia-label').innerHTML = arquivoResidencia;
+});
+
 const svgErro = '<img src = "./assets/alert-circle.svg" width="18px" height="18px" alt="Erro" />';
 
 function saveForm() {

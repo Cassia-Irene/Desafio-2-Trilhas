@@ -46,7 +46,7 @@
 
     window.addEventListener('DOMContentLoaded', () => {
         const boasVindas = document.getElementById('boas-vindas');
-        const usuario = JSON.parse(sessionStorage.getItem('usuario'));
+        const usuario = JSON.parse(sessionStorage.getItem('userData'));
         boasVindas.textContent = `Bem-vindo(a), ${usuario.nome}`;
     });
 </script>

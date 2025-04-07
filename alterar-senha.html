@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Alterar Senha</title>
+</head>
+<body class="bg-[#0F1640] min-h-screen flex">
+    <section class="alterar-senha-section flex flex-col items-center justify-center w-full h-screen">
+
+        <form id="form-alterar-senha" onsubmit="alterarSenha(event)"></form>
+            <div class="container-form flex flex-col gap-4 p-10 bg-white shadow-md rounded-lg">
+                <h1 class="text-black text-3xl font-semibold">Alterar Senha</h1>
+                <div class="estilizando-form">
+                    <label for="nova-senha">Senha atual:</label>
+                    <input type="password" id="senha-atual" name="senha-atual" required>
+                </div>
+                <div class="estilizando-form">
+                    <label for="nova-senha">Nova senha:</label>
+                    <input type="password" id="nova-senha" name="nova-senha" required>
+                </div>
+                <div class="estilizando-form">
+                    <label for="confirmar-senha">Confirmar nova senha:</label>
+                    <input type="password" id="confirmar-senha" name="confirmar-senha" required>
+                </div>
+                <button type="submit">Alterar Senha</button>
+            </div>
+    </section>
+</body>
+
+<script>
+    function alterarSenha(event) {
+        event.preventDefault(); // Impede o envio do formulário padrão
+
+        const senhaAtual = document.getElementById('senha-atual').value;
+        const novaSenha = document.getElementById('nova-senha').value;
+        const confirmarSenha = document.getElementById('confirmar-senha').value;
+
+        if (novaSenha !== confirmarSenha) {
+            alert('As senhas não coincidem!');
+            return;
+        }
+
+        // Aqui você pode adicionar a lógica para enviar os dados para o servidor
+        console.log('Senha atual:', senhaAtual);
+        console.log('Nova senha:', novaSenha);
+
+        // Exemplo de redirecionamento após a alteração da senha
+        alert('Senha alterada com sucesso!');
+    }
+</script>
+</html>

@@ -74,10 +74,10 @@
 
                 <div class="docs-identidade">
                     <label for="documento-identidade">Documento de identidade</label>
-                    <div class="conteudo-docs-identidade">
+                    <label class="conteudo-docs-identidade">
                         <input type="file" name="button-docs-identidade" id="button-docs-identidade" hidden accept=".pdf">
                         <label class="button-docs-identidade-label" for="button-docs-identidade">Clique aqui para selecionar o arquivo</label>
-                    </div>
+                    </label>
                 </div>     
 
             </section>
@@ -116,10 +116,10 @@
                 
                 <div class="docs-comprovante-residencia">
                     <label for="comprovante-residencia">Comprovante de Residência</label>
-                    <div class="conteudo-comprovante-residencia">
+                    <label class="conteudo-comprovante-residencia">
                         <input type="file" name="button-docs-comprovante-residencia" id="button-docs-comprovante-residencia" hidden accept=".pdf">
                         <label class="button-docs-comprovante-residencia-label" for="button-docs-comprovante-residencia">Clique aqui para selecionar o arquivo</label>
-                    </div>
+                    </label>
                 </div> 
             </section>
 
@@ -128,34 +128,35 @@
                 <p>Selecione apenas uma trilha</p>
 
                 <div class="container-trilhas">
-                    <div class="trilha-btn">
-                        <input type="radio" name="checkboxs" id="checkbox_front-end" checked>
+                    <label class="trilha-btn">
+                        <input type="radio" name="checkboxs" id="checkbox_front-end">
                         <img src="./assets/front-end.svg" alt="">
                         <p>Programação Front-end</p>
-                    </div>
+                    </label>
                     
-                    <div class="trilha-btn">
+                    <label class="trilha-btn">
                         <input type="radio" name="checkboxs" id="checkbox_back-end">
                         <img src="./assets/back-end.svg" alt="">
                         <p>Programação Back-end</p>
-                    </div>
+                    </label>
                     
-                    <div class="trilha-btn">
+                    <label class="trilha-btn">
                         <input type="radio" name="checkboxs" id="checkbox_jogos">
                         <img src="./assets/jogos.svg" alt="">
                         <p>Programação de Jogos</p>
-                    </div>   
-                    <div class="trilha-btn">
+                    </label>  
+
+                    <label class="trilha-btn">
                         <input type="radio" name="checkboxs" id="checkbox_ux">
                         <img src="./assets/ux.svg" alt="">
                         <p>Design e Experiência</p>
-                    </div>
+                    </label>
 
-                    <div class="trilha-btn">
+                    <label class="trilha-btn">
                         <input type="radio" name="checkboxs" id="checkbox_dados">
                         <img src="./assets/dados.svg" alt="">
                         <p>Ciência de Dados</p>
-                    </div>
+                    </label>
                 </div>
             </section>
 
@@ -175,10 +176,10 @@
 
             </section>
 
-            <div class="termos">
+            <label class="termos">
                 <input type="checkbox" name="checkbox_termos" id="checkbox_termos" class="" required>
                 <p>Declaro que li e concordo com os <a>Termos e Condições</a> e com a <a>Política de Privacidade.</a> </p>
-            </div>
+            </label>
 
             <div class="container-buttons">
                 <button type="button" class="custom-button btn-outline">Cancelar</button>

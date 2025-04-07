@@ -46,7 +46,7 @@ function saveForm() {
     }
   }
   
-  function validateForm() {
+  async function validateForm() {
     const form = document.querySelector('.form-box');
     const campos = form.querySelectorAll('input, select');
     let isValid = true;
@@ -54,12 +54,12 @@ function saveForm() {
     form.querySelectorAll('.mensagem-erro').forEach(e => e.remove());
     campos.forEach(campo => campo.classList.remove('erro'));
 
-    campos.forEach(campo => {
+    for (const campo of campos) {
       const conteudo = campo.value.trim();
       let mensagemErro = '';
 
       if (campo.required && !conteudo) {
-        mensagemErro = 'Este campo é obrigatório';
+        mensagemErro = 'Campo obrigatório';
       }
 
       if (campo.name === 'nome' && conteudo) {
@@ -136,8 +136,31 @@ function saveForm() {
         }
       }
 
-      if (campo.name === 'cep' && conteudo && conteudo.length !== 9) {
-        mensagemErro = 'Insira um CEP válido';
+      if (campo.name === 'cep' && conteudo) {
+        if (conteudo.length !== 9) {
+          mensagemErro = 'Insira um CEP válido';
+        } else {
+          const cepSemHifen = conteudo.replace(/\D/g, '');
+          try {
+            const resposta = await fetch(`https://viacep.com.br/ws/${cepSemHifen}/json/`);
+            const dados = await resposta.json();
+
+            if(dados.erro) {
+              mensagemErro = 'CEP não encontrado';
+            } else {
+              const cidade = form.querySelector('input[name="cidade"]');
+              const estado = form.querySelector('input[name="estado"]');
+
+              if (cidade) cidade.value = dados.localidade || '';
+              if (estado) estado.value = dados.uf || '';
+              
+            }
+          } catch (error) {
+            console.error('Erro ao buscar CEP:', error);
+            mensagemErro = 'Erro ao consultar o CEP';
+          }
+        }
+        
       }
 
       if (mensagemErro) {
@@ -145,12 +168,12 @@ function saveForm() {
         campo.classList.add('erro');
         const erro = document.createElement('div');
         erro.classList.add('mensagem-erro');
-        erro.innerHTML = `${svgErro} ${mensagemErro}`;
+        erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
 
         campo.insertAdjacentElement('afterend', erro);
       }
       
-    });
+    };
 
     const identidadeInput = document.getElementById('button-docs-identidade');
     const residenciaInput = document.getElementById('button-docs-comprovante-residencia');
@@ -159,7 +182,7 @@ function saveForm() {
       isValid = false;
       const erro = document.createElement('div');
       erro.classList.add('mensagem-erro');
-      erro.innerHTML = `${svgErro} É necessário enviar um documento de identidade`;
+      erro.innerHTML = `${svgErro}&nbsp;É necessário enviar um documento de identidade`;
 
       document.querySelector('.docs-identidade').insertAdjacentElement('afterend', erro);
     }
@@ -168,14 +191,44 @@ function saveForm() {
       isValid = false;
       const erro = document.createElement('div');
       erro.classList.add('mensagem-erro');
-      erro.innerHTML = `${svgErro} É necessário enviar um comprovante de residência`;
+      erro.innerHTML = `${svgErro}&nbsp;É necessário enviar um comprovante de residência`;
 
       document.querySelector('.docs-comprovante-residencia').insertAdjacentElement('afterend', erro);
     }
+
+    const radiosTrilhas = document.querySelectorAll('input[name="checkboxs"');
+    let trilhaSelecionada = false;
+
+    radiosTrilhas.forEach(radio => {
+      if (radio.checked) {
+        trilhaSelecionada = true;
+      }
+    });
+
+    if (!trilhaSelecionada) {
+      const erro = document.createElement('div');
+      erro.classList.add('mensagem-erro');
+      mensagemErro = 'É necessário selecionar uma trilha de aprendizagem';
+      erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
+
+      document.querySelector('.trilhas-aprendizagem').insertAdjacentElement('afterend', erro);
+    }
+
+    const checkboxTermos = document.querySelector('#checkbox_termos');
+
+    if (!checkboxTermos.checked) {
+      const erro = document.createElement('div');
+      erro.classList.add('mensagem-erro');
+      mensagemErro = 'É necessário aceitar os Termos e a Política de Privacidade';
+      erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
+
+      document.querySelector('.termos').insertAdjacentElement('afterend', erro);
+    }
+
     return isValid;
   }
   
-  function register(event){
+  async function register(event){
   
     event.preventDefault();
   
@@ -183,7 +236,7 @@ function saveForm() {
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
   
-    const isValid = validateForm();
+    const isValid = await validateForm();
   
     if (!isValid) {
       alert('Preencha todos os campos obrigatórios.');
@@ -200,7 +253,7 @@ function saveForm() {
 
     if (edit_campo.name === 'cpf') {
       edit_campo.value = edit_campo.value
-      .replace(/\D/g, '')
+      .replace(/\D/g, '').slice(0, 11)
       .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d{1,2})$/, '$1-$2');

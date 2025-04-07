@@ -48,7 +48,8 @@ body {
     font-size: 14px;
     display: flex;
     align-items: center;
-    gap: 4px;
+    margin-top: 4px;
+    
 }
 
 .form-box {
@@ -281,7 +282,6 @@ header {
 
 .trilhas-aprendizagem {
     padding-top: 48px;
-    padding-bottom: 48px;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -351,8 +351,9 @@ header {
 .informacoes-login{
     display: flex;
     flex-direction: column;
-    gap: 34px;
+    gap: 16px;
     width: 100%;
+    padding-top: 48px;
 
     & h3 {
         font-family: 'Poppins', sans-serif;
@@ -367,6 +368,7 @@ header {
         font-size: 14px;
         line-height: 140%;
         color: #57534E;
+        
     }
 
         & label {
@@ -375,6 +377,7 @@ header {
         font-size: 14px;
         line-height: 140%;
         color: #57534E;
+        padding-top:18px;
         padding-bottom: 4px;
         padding-left: 4px;
     }

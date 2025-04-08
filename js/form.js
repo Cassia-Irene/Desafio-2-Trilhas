@@ -136,33 +136,6 @@ function saveForm() {
         }
       }
 
-      if (campo.name === 'cep' && conteudo) {
-        if (conteudo.length !== 9) {
-          mensagemErro = 'Insira um CEP válido';
-        } else {
-          const cepSemHifen = conteudo.replace(/\D/g, '');
-          try {
-            const resposta = await fetch(`https://viacep.com.br/ws/${cepSemHifen}/json/`);
-            const dados = await resposta.json();
-
-            if(dados.erro) {
-              mensagemErro = 'CEP não encontrado';
-            } else {
-              const cidade = form.querySelector('input[name="cidade"]');
-              const estado = form.querySelector('input[name="estado"]');
-
-              if (cidade) cidade.value = dados.localidade || '';
-              if (estado) estado.value = dados.uf || '';
-              
-            }
-          } catch (error) {
-            console.error('Erro ao buscar CEP:', error);
-            mensagemErro = 'Erro ao consultar o CEP';
-          }
-        }
-        
-      }
-
       if (mensagemErro) {
         isValid = false;
         campo.classList.add('erro');
@@ -214,6 +187,32 @@ function saveForm() {
       document.querySelector('.trilhas-aprendizagem').insertAdjacentElement('afterend', erro);
     }
 
+    const senha = document.querySelector('#senha');
+    const confirmarSenha = document.querySelector('#confirmar-senha');
+    const senhaValor = senha.value.trim();
+    const confirmarSenhaValor = confirmarSenha.value.trim();
+    const regexSenha = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}\[\]:;<>,.?~\\/-]).{8,}$/;
+
+    if (!regexSenha.test(senhaValor)) {
+      isValid = false;
+      const erro = document.createElement('div');
+      erro.classList.add('mensagem-erro');
+      mensagemErro = `A senha precisa ter no mínimo 8 caracteres, uma letra maiúscula, um número e um caractere especial.`;
+      erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
+      senha.insertAdjacentElement('afterend', erro);
+      senha.classList.add('erro');
+    }
+
+    if (senhaValor !== confirmarSenhaValor) {
+      isValid = false;
+      const erro = document.createElement('div');
+      erro.classList.add('mensagem-erro');
+      mensagemErro = `As senhas não coincidem`;
+      erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
+      confirmarSenha.insertAdjacentElement('afterend', erro);
+      confirmarSenha.classList.add('erro');
+    }
+
     const checkboxTermos = document.querySelector('#checkbox_termos');
 
     if (!checkboxTermos.checked) {
@@ -248,19 +247,66 @@ function saveForm() {
     window.location.href = 'login.html';
   }
 
-  document.addEventListener('input', (e) =>{
-    const edit_campo = e.target;
+  const inputCpf = document.querySelector('#cpf');
+  const inputTelefone = document.querySelector('#telefone');
+  const inputCep = document.querySelector('#cep');
+  const erroCep = document.createElement('div');
+  erroCep.classList.add('mensagem-erro');
 
-    if (edit_campo.name === 'cpf') {
-      edit_campo.value = edit_campo.value
+  inputCep.addEventListener('input', () => {
+    inputCep.value = inputCep.value
+    .replace(/\D/g, '')
+      .replace(/(\d{5})(\d)/, '$1-$2')
+      .replace(/(-\d{3})\d+?$/, '$1');
+  });
+
+  inputCep.addEventListener('blur', () => {
+    const conteudo = inputCep.value;
+
+    if (/^\d{5}-?\d{3}$/.test(conteudo)) {
+      const cepSemHifen= conteudo.replace(/\D/g, '');
+      const form = document.querySelector('.form-box');
+
+      fetch(`https://viacep.com.br/ws/${cepSemHifen}/json/`)
+      .then(resposta => resposta.json())
+      .then(dados => {
+        const cidade = form.querySelector('input[name="cidade"]');
+        const estado = form.querySelector('input[name="estado"]');
+
+        if (dados.erro) {
+          erroCep.innerHTML = `${svgErro}&nbsp;CEP não encontrado`;
+          if (!cidade.nextElementSibling?.classList.contains('mensagem-erro')) {
+            cep.insertAdjacentElement('afterend', erroCep);
+          }
+        } else {
+          cidade.value = dados.localidade || '';
+          estado.value = dados.uf || '';
+          if(erroCep.parentElement) erroCep.remove();
+        }
+      })
+
+      .catch(err => {
+        console.error('Erro ao buscar CEP:', err);
+        erroCep.innerHTML = `${svgErro}&nbsp;CEP não encontrado`;
+        const cidade = form.querySelector('input[name="cidade"]');
+        if (!cidade.nextElementSibling?.classList.contains('mensagem-erro')) {
+          cep.insertAdjacentElement('afterend', erroCep);
+        }
+      })
+    }
+  });
+
+  inputCpf?.addEventListener('input', () => {
+    inputCpf.value = inputCpf.value
       .replace(/\D/g, '').slice(0, 11)
       .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d)/, '$1.$2')
       .replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    }
-
-    if (edit_campo.name === 'telefone') {
-      let numero = edit_campo.value.replace(/\D/g, '');
+  });
+    
+  inputTelefone?.addEventListener('input', () => {
+    
+      let numero = inputTelefone.value.replace(/\D/g, '');
       
       if (numero.length <= 10) {
         numero = numero.replace(/(\d{2})(\d{4})(\d{0,4})/, '($1) $2-$3');
@@ -268,15 +314,8 @@ function saveForm() {
         numero = numero.replace(/(\d{2})(\d{5})(\d{0,4})/, '($1) $2-$3');
       }
 
-      edit_campo.value = numero.replace(/(-\d{4})\d+?$/, '$1');
-    }
-
-    if (edit_campo.name === 'cep') {
-      edit_campo.value = edit_campo.value
-      .replace(/\D/g, '')
-      .replace(/(\d{5})(\d)/, '$1-$2')
-      .replace(/(-\d{3})\d+?$/, '$1');
-    }
+      inputTelefone.value = numero.replace(/(-\d{4})\d+?$/, '$1');
+    
   });
-  
+    
   //loadFormData();

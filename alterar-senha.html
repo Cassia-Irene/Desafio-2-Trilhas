@@ -12,7 +12,8 @@
 <body class="bg-[#0F1640] flex w-screen h-screen font-[Poppins] ">
     <section class="alterar-senha-section flex flex-col items-center justify-center w-full h-screen">
 
-        <form id="form-alterar-senha" onsubmit="alterarSenha(event)"></form>
+        <form id="form-alterar-senha" onsubmit="alterarSenha(event)">
+
             <div class="container-form bg-white p-8 rounded-lg shadow-lg w-96 flex flex-col gap-2">
                 <h1 class="text-black text-2xl font-semibold">Alterar Senha</h1>
                 <div class="estilizando-form">
@@ -29,28 +30,42 @@
                 </div>
                 <button type="submit" class="w-full text-white py-2 rounded-md bg-[#2135A6] hover:bg-[#0F1640] transition duration-200">Alterar Senha</button>
             </div>
+        </form>
     </section>
 </body>
 
 <script>
-    function alterarSenha(event) {
-        event.preventDefault(); // Impede o envio do formulário padrão
+     function alterarSenha(event) {
+        event.preventDefault();
 
         const senhaAtual = document.getElementById('senha-atual').value;
         const novaSenha = document.getElementById('nova-senha').value;
         const confirmarSenha = document.getElementById('confirmar-senha').value;
 
-        if (novaSenha !== confirmarSenha) {
-            alert('As senhas não coincidem!');
+        const usuario = JSON.parse(sessionStorage.getItem('userData'));
+        if (senhaAtual !== usuario.senha) {
+            alert('Senha atual incorreta!');
             return;
         }
-
-        // Aqui você pode adicionar a lógica para enviar os dados para o servidor
-        console.log('Senha atual:', senhaAtual);
-        console.log('Nova senha:', novaSenha);
-
-        // Exemplo de redirecionamento após a alteração da senha
+        if (novaSenha !== confirmarSenha) {
+            alert('As novas senhas não coincidem!');
+            return;
+        }
+        if (novaSenha.length < 8) {
+            alert('A nova senha deve ter pelo menos 8 caracteres!');
+            return;
+        }
+        if (!/[!@#$%^&*]/.test(novaSenha)) {
+            alert('A nova senha deve conter pelo menos um caractere especial!');
+            return;
+        }
+       
+        usuario.senha = novaSenha;
+        sessionStorage.setItem('userData', JSON.stringify(usuario));
         alert('Senha alterada com sucesso!');
+        
+        window.location.href = 'info-usuarios.html';
     }
 </script>
+
 </html>

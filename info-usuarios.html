@@ -41,19 +41,19 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label class="block text-sm font-medium">Nome Completo</label>
-                    <input id="nome" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="nome" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Data de Nascimento</label>
-                    <input id="nascimento" type="date" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="nascimento" type="date" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">CPF</label>
-                    <input id="cpf" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="cpf" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Sexo</label>
-                    <input id="sexo" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="sexo" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                 </div>
               </div>
@@ -64,11 +64,11 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label class="block text-sm font-medium">E-mail</label>
-                    <input id="email" type="email" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="email" type="email" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Telefone</label>
-                    <input id="telefone" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="telefone" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                 </div>
               </div>
@@ -79,30 +79,30 @@
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label class="block text-sm font-medium">CEP</label>
-                    <input id="cep" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="cep" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Rua</label>
-                    <input id="rua" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="rua" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Número</label>
-                    <input id="numero" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="numero" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Cidade</label>
-                    <input id="cidade" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="cidade" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Estado</label>
-                    <input id="estado" type="text" class="w-1/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="estado" type="text" class="w-1/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                 </div>
               </div>
       
               <div class="w-full flex flex-col items-center justify-center gap-2">
                 <h3 class="text-lg font-semibold">Trilha de Aprendizagem</h3>
-                <input id="trilha" type="text" class="w-3/12 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                <input id="trilha" type="text" class="w-3/12 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100 " disabled />
               </div>
       
               <div class="text-center pt-4">
@@ -120,21 +120,80 @@
     </main>
 
 
-
+    <script>
+      const menuBtn = document.getElementById('menu-btn');
+      const sidebar = document.getElementById('sidebar');
+  
+      menuBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('-translate-x-full');
+      });
+  
+      window.addEventListener('DOMContentLoaded', () => {
+          const boasVindas = document.getElementById('boas-vindas');
+          const usuario = JSON.parse(sessionStorage.getItem('userData'));
+          boasVindas.textContent = `Bem-vindo(a), ${usuario.nome}`;
+      });
+  
+  
+      let editando = false;
+       const camposEditaveis =[
+          'nascimento',
+          'sexo',
+          'email',
+          'telefone',
+          'cep',
+          'rua',
+          'numero',
+          'cidade',
+          'estado',
+       ];
+  
+       window.onload = function () {
+          const userData= JSON.parse(sessionStorage.getItem('userData'));
+          document.getElementById('nome').value = userData.nome;
+          document.getElementById('nascimento').value = userData.nascimento;
+          document.getElementById('cpf').value = userData.cpf;
+          document.getElementById('sexo').value = userData.sexo || '';
+          document.getElementById('email').value = userData.email || '';
+          document.getElementById('telefone').value = userData.telefone || '';
+  
+          document.getElementById('cep').value = userData.cep || '';
+          document.getElementById('rua').value = userData.rua || '';
+          document.getElementById('numero').value = userData.numero || '';
+          document.getElementById('cidade').value = userData.cidade || '';
+          document.getElementById('estado').value = userData.estado || '';
+  
+          document.getElementById('trilha').value = userData.trilha || '';
+        };
+  
+      function alternarEdicao() {
+          editando = !editando;
+          
+          camposEditaveis.forEach(id => {
+              document.getElementById(id).disabled = !editando;
+          });
+  
+          const botao = document.getElementById('btnEditar');
+          botao.textContent = editando ? 'Salvar' : 'Editar';
+          botao.classList.toggle('bg-[#0F1640]', editando);
+  
+          if (!editando) {
+            salvarAlteracoes();
+          }
+        }
+        
+        function salvarAlteracoes() {
+          const userData = JSON.parse(sessionStorage.getItem('userData'));
+          
+          camposEditaveis.forEach(id => {
+              userData[id] = document.getElementById(id).value;
+          });
+          
+          sessionStorage.setItem('userData', JSON.stringify(userData));
+          localStorage.setItem('userData', JSON.stringify(userData));
+          
+          alert('Alterações salvas com sucesso!');
+        }
+  </script>
 </body>
-
-<script>
-    const menuBtn = document.getElementById('menu-btn');
-    const sidebar = document.getElementById('sidebar');
-
-    menuBtn.addEventListener('click', () => {
-        sidebar.classList.toggle('-translate-x-full');
-    });
-
-    window.addEventListener('DOMContentLoaded', () => {
-        const boasVindas = document.getElementById('boas-vindas');
-        const usuario = JSON.parse(sessionStorage.getItem('userData'));
-        boasVindas.textContent = `Bem-vindo(a), ${usuario.nome}`;
-    });
-</script>
 </html>

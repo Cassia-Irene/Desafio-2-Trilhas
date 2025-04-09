@@ -9,7 +9,7 @@
     <title>Página do Aluno</title>
     
 </head>
-<body class=" bg-[#F3F4F6] min-h-screen flex">
+<body class=" bg-gray-100 min-h-screen flex flex-col font-[Poppins]">
 
     <aside id="sidebar" class="fixed top-0 left-0 w-64 h-screen bg-[#0F1640] text-white p-5 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300 gap-16">
 
@@ -31,10 +31,92 @@
     </header>
 
     <main class="flex-1 p-5 lg:ml-64 mt-20">
-        <div class=" w-full h-auto p-20 bg-white shadow-md rounded-lg">
-            <h2 class="text-2xl font-bold">Seus Dados</h2>
-        <p class="mt-2">Aqui é o conteúdo principal da página.</p>
-        </div>
+        <div class="w-full mx-auto bg-white p-8 rounded-2xl shadow-lg flex flex-col ">
+            <h2 class="text-2xl font-bold text-center mb-8">Informações do Aluno</h2>
+      
+            <form id="formAluno" class="space-y-6">
+              <div>
+                <h3 class="text-lg font-semibold mb-2">Dados Pessoais</h3>
+      
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium">Nome Completo</label>
+                    <input id="nome" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium">Data de Nascimento</label>
+                    <input id="nascimento" type="date" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium">CPF</label>
+                    <input id="cpf" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium">Sexo</label>
+                    <input id="sexo" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                </div>
+              </div>
+      
+              <div>
+                <h3 class="text-lg font-semibold mb-2">Contato</h3>
+      
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium">E-mail</label>
+                    <input id="email" type="email" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium">Telefone</label>
+                    <input id="telefone" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                </div>
+              </div>
+      
+              <div>
+                <h3 class="text-lg font-semibold mb-2">Endereço</h3>
+      
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-medium">CEP</label>
+                    <input id="cep" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium">Rua</label>
+                    <input id="rua" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium">Número</label>
+                    <input id="numero" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium">Cidade</label>
+                    <input id="cidade" type="text" class="w-4/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium">Estado</label>
+                    <input id="estado" type="text" class="w-1/5 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  </div>
+                </div>
+              </div>
+      
+              <div class="w-full flex flex-col items-center justify-center gap-2">
+                <h3 class="text-lg font-semibold">Trilha de Aprendizagem</h3>
+                <input id="trilha" type="text" class="w-3/12 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+              </div>
+      
+              <div class="text-center pt-4">
+                <button
+                  id="btnEditar"
+                  type="button"
+                  class="px-6 py-2 bg-[#2135A6] text-white rounded-xl hover:bg-[#0F1640] transition"
+                  onclick="alternarEdicao()"
+                >
+                  Editar
+                </button>
+              </div>
+            </form>
+          </div>
     </main>
 
 

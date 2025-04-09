@@ -59,6 +59,10 @@
             alert('A nova senha deve conter pelo menos um caractere especial!');
             return;
         }
+        if (!/[a-zA-Z]/.test(novaSenha)) {
+            alert('A nova senha deve conter pelo menos uma letra!');
+            return;
+        }
        
         usuario.senha = novaSenha;
         sessionStorage.setItem('userData', JSON.stringify(usuario));

@@ -51,9 +51,6 @@ function saveForm() {
     const campos = form.querySelectorAll('input, select');
     let isValid = true;
 
-    form.querySelectorAll('.mensagem-erro').forEach(e => e.remove());
-    campos.forEach(campo => campo.classList.remove('erro'));
-
     for (const campo of campos) {
       const conteudo = campo.value.trim();
       let mensagemErro = '';
@@ -228,12 +225,7 @@ function saveForm() {
   }
   
   async function register(event){
-  
     event.preventDefault();
-  
-    const form = document.getElementsByClassName('form-box')[0];
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
   
     const isValid = await validateForm();
   
@@ -242,8 +234,15 @@ function saveForm() {
       return;
     }
   
+    const form = document.getElementsByClassName('form-box')[0];
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+
+    const checkboxesSelecionados = document.querySelectorAll('input[name="trilhas[]"]:checked');
+    const trilhas = Array.from(checkboxesSelecionados).map(cb => cb.value).join(', ');
+    data.trilhas = trilhas;
+  
     sessionStorage.setItem('userData', JSON.stringify(data));
-   
     window.location.href = 'login.html';
   }
 

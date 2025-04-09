@@ -53,7 +53,11 @@
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Sexo</label>
-                    <input id="sexo" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <select name="sexo" id="sexo" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled>
+                      <option value="feminino">Feminino</option>
+                      <option value="masculino">Masculino</option>
+                      <option value="outro">Outro</option>
+                    </select>
                   </div>
                 </div>
               </div>
@@ -87,7 +91,7 @@
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Número</label>
-                    <input id="numero" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    <input id="numero" type="text" class="w-1/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Cidade</label>
@@ -102,7 +106,7 @@
       
               <div class="w-full flex flex-col items-center justify-center gap-2">
                 <h3 class="text-lg font-semibold">Trilha de Aprendizagem</h3>
-                <input id="trilha" type="text" class="w-3/12 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100 " disabled />
+                <input id="trilhas" type="text" class="w-3/12 mt-1 py-2 rounded-lg border border-gray-300 bg-gray-100 " disabled />
               </div>
       
               <div class="text-center pt-4">
@@ -151,7 +155,7 @@
        window.onload = function () {
           const userData= JSON.parse(sessionStorage.getItem('userData'));
           document.getElementById('nome').value = userData.nome;
-          document.getElementById('nascimento').value = userData.nascimento;
+          document.getElementById('nascimento').value = userData.nascimento || '';
           document.getElementById('cpf').value = userData.cpf;
           document.getElementById('sexo').value = userData.sexo || '';
           document.getElementById('email').value = userData.email || '';
@@ -163,7 +167,7 @@
           document.getElementById('cidade').value = userData.cidade || '';
           document.getElementById('estado').value = userData.estado || '';
   
-          document.getElementById('trilha').value = userData.trilha || '';
+          document.getElementById('trilhas').value = userData.trilhas || '';
         };
   
       function alternarEdicao() {

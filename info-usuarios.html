@@ -89,17 +89,19 @@
                     <label class="block text-sm font-medium">Rua</label>
                     <input id="rua" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
-                  <div>
-                    <label class="block text-sm font-medium">Número</label>
-                    <input id="numero" type="text" class="w-1/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                  <div class="w-4/5 flex gap-2">
+                    <div class="w-1/5">
+                      <label class="block text-sm font-medium">Número</label>
+                      <input id="numero" type="text" class="w-full mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    </div>
+                    <div class="w-1/5">
+                      <label class="block text-sm font-medium">Estado</label>
+                      <input id="estado" type="text" class="w-full mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
+                    </div>
                   </div>
                   <div>
                     <label class="block text-sm font-medium">Cidade</label>
                     <input id="cidade" type="text" class="w-4/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium">Estado</label>
-                    <input id="estado" type="text" class="w-1/5 mt-1 py-2 px-2 rounded-lg border border-gray-300 bg-gray-100" disabled />
                   </div>
                 </div>
               </div>
@@ -155,12 +157,11 @@
        window.onload = function () {
           const userData= JSON.parse(sessionStorage.getItem('userData'));
           document.getElementById('nome').value = userData.nome;
-          document.getElementById('nascimento').value = userData.nascimento || '';
+          document.getElementById('nascimento').value = userData["data-nascimento"] || '';
           document.getElementById('cpf').value = userData.cpf;
           document.getElementById('sexo').value = userData.sexo || '';
           document.getElementById('email').value = userData.email || '';
           document.getElementById('telefone').value = userData.telefone || '';
-  
           document.getElementById('cep').value = userData.cep || '';
           document.getElementById('rua').value = userData.rua || '';
           document.getElementById('numero').value = userData.numero || '';

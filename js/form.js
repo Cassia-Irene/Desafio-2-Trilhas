@@ -197,8 +197,15 @@ function saveForm() {
       isValid = false;
       const erro = document.createElement('div');
       erro.classList.add('mensagem-erro');
-      mensagemErro = `8 caracteres<br>1 maiúscula<br>1 número<br>1 caractere especial`;
-      erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
+      mensagemErro = mensagemErro = `
+        <div class="lista-erro">
+          <div class="lista-erro-item">${svgErro} 8 caracteres</div>
+          <div class="lista-erro-item">${svgErro} 1 maiúscula</div>
+          <div class="lista-erro-item">${svgErro} 1 número</div>
+          <div class="lista-erro-item">${svgErro} 1 caractere especial</div>
+        </div>
+      `;
+      erro.innerHTML = `${mensagemErro}`;
       senha.insertAdjacentElement('afterend', erro);
       senha.classList.add('erro');
     }

@@ -47,10 +47,24 @@ body {
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     display: flex;
-    align-items: center;
+    align-items: start;
     margin-top: 4px;
+    gap: 0.2rem;
     
 }
+
+.lista-erro {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .lista-erro-item {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+  }
 
 .form-box {
     flex: 1;

@@ -157,7 +157,7 @@
        window.onload = function () {
           const userData= JSON.parse(sessionStorage.getItem('userData'));
           document.getElementById('nome').value = userData.nome;
-          document.getElementById('nascimento').value = userData["data-nascimento"] || '';
+          document.getElementById('nascimento').value = userData.nascimento || '';
           document.getElementById('cpf').value = userData.cpf;
           document.getElementById('sexo').value = userData.sexo || '';
           document.getElementById('email').value = userData.email || '';

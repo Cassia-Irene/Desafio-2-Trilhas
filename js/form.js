@@ -72,19 +72,19 @@ function saveForm() {
         }
       }
 
-      if (campo.name === 'data-nascimento' && conteudo) {
+      if (campo.name === 'nascimento' && conteudo) {
         const hoje = new Date();
-        const dataNascimento = new Date(conteudo);
+        const nascimento = new Date(conteudo);
         
-        if (isNaN(dataNascimento.getTime())) {
+        if (isNaN(nascimento.getTime())) {
           mensagemErro = 'Insira uma data de nascimento válida';
-        } else if (dataNascimento >= hoje) {
+        } else if (nascimento >= hoje) {
           mensagemErro = 'Insira uma data de nascimento válida';
         } else {
-          let idade = hoje.getFullYear() - dataNascimento.getFullYear();
-          const mes = hoje.getMonth() - dataNascimento.getMonth();
+          let idade = hoje.getFullYear() - nascimento.getFullYear();
+          const mes = hoje.getMonth() - nascimento.getMonth();
 
-          if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+          if (mes < 0 || (mes === 0 && hoje.getDate() < nascimento.getDate())) {
             idade--;
           }
 

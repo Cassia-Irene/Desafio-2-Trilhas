@@ -51,12 +51,15 @@ function saveForm() {
     const campos = form.querySelectorAll('input, select');
     let isValid = true;
 
+    form.querySelectorAll('.mensagem-erro').forEach(e => e.remove());
+    campos.forEach(campo => campo.classList.remove('erro'));
+
     for (const campo of campos) {
       const conteudo = campo.value.trim();
       let mensagemErro = '';
 
       if (campo.required && !conteudo) {
-        mensagemErro = 'Campo obrigatório';
+        mensagemErro = 'Obrigatório';
       }
 
       if (campo.name === 'nome' && conteudo) {
@@ -152,7 +155,7 @@ function saveForm() {
       isValid = false;
       const erro = document.createElement('div');
       erro.classList.add('mensagem-erro');
-      erro.innerHTML = `${svgErro}&nbsp;É necessário enviar um documento de identidade`;
+      erro.innerHTML = `${svgErro}&nbsp;Documento de identidade obrigatório`;
 
       document.querySelector('.docs-identidade').insertAdjacentElement('afterend', erro);
     }
@@ -161,7 +164,7 @@ function saveForm() {
       isValid = false;
       const erro = document.createElement('div');
       erro.classList.add('mensagem-erro');
-      erro.innerHTML = `${svgErro}&nbsp;É necessário enviar um comprovante de residência`;
+      erro.innerHTML = `${svgErro}&nbsp;Comprovante de residência obrigatório`;
 
       document.querySelector('.docs-comprovante-residencia').insertAdjacentElement('afterend', erro);
     }
@@ -178,7 +181,7 @@ function saveForm() {
     if (!trilhaSelecionada) {
       const erro = document.createElement('div');
       erro.classList.add('mensagem-erro');
-      mensagemErro = 'É necessário selecionar uma trilha de aprendizagem';
+      mensagemErro = 'Escolha uma trilha de aprendizagem';
       erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
 
       document.querySelector('.trilhas-aprendizagem').insertAdjacentElement('afterend', erro);
@@ -194,8 +197,15 @@ function saveForm() {
       isValid = false;
       const erro = document.createElement('div');
       erro.classList.add('mensagem-erro');
-      mensagemErro = `A senha precisa ter no mínimo 8 caracteres, uma letra maiúscula, um número e um caractere especial.`;
-      erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
+      mensagemErro = mensagemErro = `
+        <div class="lista-erro">
+          <div class="lista-erro-item">${svgErro} 8 caracteres</div>
+          <div class="lista-erro-item">${svgErro} 1 maiúscula</div>
+          <div class="lista-erro-item">${svgErro} 1 número</div>
+          <div class="lista-erro-item">${svgErro} 1 caractere especial</div>
+        </div>
+      `;
+      erro.innerHTML = `${mensagemErro}`;
       senha.insertAdjacentElement('afterend', erro);
       senha.classList.add('erro');
     }
@@ -215,7 +225,7 @@ function saveForm() {
     if (!checkboxTermos.checked) {
       const erro = document.createElement('div');
       erro.classList.add('mensagem-erro');
-      mensagemErro = 'É necessário aceitar os Termos e a Política de Privacidade';
+      mensagemErro = 'É obrigatório aceitar os Termos e a Política';
       erro.innerHTML = `${svgErro}&nbsp;${mensagemErro}`;
 
       document.querySelector('.termos').insertAdjacentElement('afterend', erro);
@@ -225,7 +235,12 @@ function saveForm() {
   }
   
   async function register(event){
+  
     event.preventDefault();
+  
+    const form = document.getElementsByClassName('form-box')[0];
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
   
     const isValid = await validateForm();
   
@@ -234,15 +249,8 @@ function saveForm() {
       return;
     }
   
-    const form = document.getElementsByClassName('form-box')[0];
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-
-    const checkboxesSelecionados = document.querySelectorAll('input[name="trilhas[]"]:checked');
-    const trilhas = Array.from(checkboxesSelecionados).map(cb => cb.value).join(', ');
-    data.trilhas = trilhas;
-  
     sessionStorage.setItem('userData', JSON.stringify(data));
+   
     window.location.href = 'login.html';
   }
 
